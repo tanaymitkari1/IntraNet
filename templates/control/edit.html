@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form method="POST">
+        <table>
+            {% csrf_token %}
+            {{edit_form}}
+        </table>
+        <input type="submit" value="save changes">
+    </form>
+
+{% endblock content %}

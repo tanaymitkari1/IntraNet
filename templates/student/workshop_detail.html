@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<h2>{{workshop.title}}</h2>
+<p>{{workshop.information}}</p>
+
+<form method="POST" action="/workshop/{{workshop.id}}/">
+    {% csrf_token %}
+
+    <input type="submit" value="submit">
+</form>
+{% endblock content %}

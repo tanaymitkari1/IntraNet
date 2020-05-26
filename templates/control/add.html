@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-success text-center m-2 transbox" id="msg" role="alert">
+        {{message}}
+    </div>
+{% endfor %}
+{% endif %}
+
+      <nav aria-label="breadcrumb location-nav">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{%url 'dashboard' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{%url 'placement' %}">Placement</a></li>
+          <li class="breadcrumb-item active">Create new placement</li>
+        </ol>
+      </nav>
+    
+
+<div class="container">
+    <!-- Material form subscription -->
+    <div class="card mw-100">
+        <h5 class="card-header info-color white-text text-center py-4">
+            <strong>Create new placement</strong>
+        </h5>
+        <!--Card content-->
+        <div class="card-body px-lg-5">
+            <!-- Form -->
+            <form  method="POST" class="text-center" style="color: #757575;" action="/placement/create_placement/">
+                {% csrf_token %}
+                <!-- Title -->
+                <div class="md-form form-lg">
+                    <input type="text" id="inputLGEx" class="form-control form-control-lg" name="title">
+                    <label for="inputLGEx">Title</label>
+                </div>
+                <!-- Info -->
+                <div class="md-form form-lg">
+                    <input type="text" id="inputLGEx" class="form-control form-control-lg" name="info" required>
+                    <label for="inputLGEx">Details of placement</label>
+                </div>
+
+                <div class="row">
+                    <!--start date-->
+                    <div class="col">
+                        <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
+                            <input type="date" id="example" class="form-control" name="start_date" required>
+                            <label for="example">Start Date</label>
+                            <i class="fas fa-calendar input-prefix" tabindex=0></i>
+                        </div>
+                    </div>
+                    <!--end date-->
+                    <div class="col">
+                        <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
+                            <input type="date" id="example" class="form-control" name="end_date" required>
+                            <label for="example">End Date</label>
+                            <i class="fas fa-calendar input-prefix" tabindex=0></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="">Start Time</label>
+                        <div class="md-form md-outline input-with-post-icon timepicker" twelvehour="true">
+                            <input type="time" id="twelve-hour-clock" class="form-control" name="start_time" required>
+                            <i class="fas fa-clock input-prefix"></i>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="">End Time</label>
+                        <div class="md-form md-outline input-with-post-icon timepicker" twelvehour="true">
+                            <input type="time" id="twelve-hour-clock" class="form-control" name="end_time" required>
+                            <label for="twelve-hour-clock"></label>
+                            <i class="fas fa-clock input-prefix"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sign in button -->
+                <button class="btn btn-floating btn-lg purple-gradient btn-rounded" type="submit">Submit</button>
+            </form>
+            <!-- Form -->
+        </div>
+    </div>
+<!-- Material form subscription -->
+</div>
+
+    
+
+{% endblock content %}

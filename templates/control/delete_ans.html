@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{placement.title}}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <p>are you sure you want to delete this placement?</p>
+        <input class="btn-login" type="submit" value="Yes"> <a href="{%url 'placement' %}" class="btn btn-no">No</a>
+    </form>
+
+{% endblock content %}

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+    <!--Navbar -->
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+    <a class="navbar-brand" href="#">IntraNet </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+      aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'dashboard' %}">Dashboard
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'BOS' %}">BOS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'placement' %}">Placement</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Feedback</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light">
+            <i class="fab fa-google-plus-g"></i>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-default"
+            aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!--/.Navbar -->
+
+<div class="container">
+ <!-- Material form login -->
+<div class="card">
+    <h5 class="card-header info-color white-text text-center py-4">
+      <strong>Sign in</strong>
+    </h5>
+  
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+  
+      <!-- Form -->
+      <form class="text-center" style="color: #757575;" method="POST">
+        {% csrf_token %}
+        <!-- sub name -->
+        <div class="md-form">
+          <input type="text" class="form-control" name="sub_name">
+          <label for="materialLoginFormEmail">Subject Name</label>
+        </div>
+        <!-- sub code -->
+        <div class="md-form">
+          <input type="text" class="form-control" name="sub_code">
+          <label for="materialLoginFormPassword">Subject Code</label>
+        </div>
+        <div class="md-form">
+            <input type="text" class="form-control" name="course_type">
+            <label for="materialLoginFormPassword">Course Type</label>
+        </div>
+        <div class="md-form">
+            <input type="number" class="form-control" name="year_code">
+            <label for="materialLoginFormPassword">Year of Coding</label>
+        </div>
+        <div class="md-form">
+            <input type="text" class="form-control" name="school_name">
+            <label for="materialLoginFormPassword">School Name</label>
+        </div>
+        <div class="md-form">
+            <input type="text" class="form-control" name="special">
+            <label for="materialLoginFormPassword">Specialization</label>
+        </div>
+        <!-- Sign in button -->
+        <button class="btn btn-outline btn-success btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Add BOS</button>
+      </form>
+      <!-- Form --> 
+    </div>
+  </div>
+  <!-- Material form login -->
+</div>
+{% endblock content %}

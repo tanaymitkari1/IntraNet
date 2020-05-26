@@ -1,0 +1,124 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+  </head>
+  <body style="background-color: #4d071c;">
+    
+
+
+    {% block content %}
+
+
+
+    <a>
+        <img src="{% static 'images/adypu logo.jpg' %}" alt="adypu logo" style="height: 130px;width: 700px;margin-left: 400px; margin-top: 50px;">
+    </a>
+      
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card-box bg-blue">
+                <div class="inner">
+                    <h3> Placements </h3>
+                    
+                </div>
+                <div class="icon">
+                    <i class="fa fa-graduation-cap" aria-hidden="true" style="color: #c62828;"></i>
+                </div>
+                <a href="{% url 'placement' %}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right" ></i></a>
+            </div>
+          </div>
+
+        <div class="col-sm-6">
+            <div class="card-box bg-green">
+                <div class="inner">
+                    <h3>Extra Curricular Activites </h3>
+                    <p>  </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-trophy" aria-hidden="true"  style="color: #1b5e20 ;"></i>
+                </div>
+                <a href="{% url 'eca' %}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card-box bg-orange">
+                <div class="inner">
+                    <h3>Board of studies </h3>
+                    <p>  </p>
+                </div>
+                <div class="icon">
+                <i class="fa fa-university" aria-hidden="true" style="color: #ffeb3b;"></i>
+                </div>
+                <a href="{% url 'BOS' %}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right" ></i></a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card-box bg-red">
+                <div class="inner">
+                    <h3>Faculty feedback</h3>
+                    <p>  </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-comments" style="color: #4527a0;"></i>
+                </div>
+                <a href="front.html" class="card-box-footer">View More <i class="fa fa-arrow-circle-right" ></i></a>
+            </div>
+        </div>
+
+            
+    </div>
+  </div>
+</div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+    <!-- <h1>dashboard</h1>
+    <p>user<b> {{user.first_name}}</b> is logged in sucessfully.</p>
+    <form method="POST" action="/logout/">
+        {% csrf_token %}
+        <input type="submit" value="logout">
+    </form>
+
+    <a href="{% url 'profile' %}">update profile</a>
+    <ul class="list-group list-group-horizontal-lg">
+        <a href="{% url 'BOS' %}">
+            <li class="list-group-item">BOS</li>
+        </a>
+        <a href="{% url 'placement' %}">
+            <li class="list-group-item">Placements</li>
+        </a>
+        <a href="{% url 'eca' %}">
+            <li class="list-group-item">ECA</li>
+        </a>
+        <a href="#">
+            <li class="list-group-item">Faculty Feedback</li>
+        </a>
+      </ul> -->
+
+
+      
+    
+{% endblock content %}

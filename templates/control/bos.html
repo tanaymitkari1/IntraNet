@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+  
+
+<div class="jumbotron jumbotron-fluid">
+	<div class="text-center df">
+		<div class="ans-form">
+			{% if myfilter %}
+				<form method="GET">
+					<div class="row">
+					{% csrf_token %}
+						{{myfilter.form|crispy}}
+						<div class="bos-btn col">
+							<input type="submit" class="btn peach-gradient  accent-2 btn-circle" value="submit">
+						</div>
+					</div>
+					
+				</form>
+			{% endif %}
+		</div>
+	</div>
+</div>
+<div class="table-responsive table-striped text-center">
+	<table class="table">
+	  <thead>
+		<tr>
+			<th scope="col">Subject Name</th>
+			<th scope="col">Subject Code</th>
+			<th scope="col">Course Type</th>
+			<th scope="col">Year of Coding</th>
+			<th scope="col">School Name</th>
+			<th scope="col">Specialization</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		{% if data %}
+			{% for data in data %}
+				<tr>
+					<td>{{data.subject_name}}</td>
+					<td>{{data.subject_code}}</td>
+					<td>{{data.course_type}}</td>
+					<td>{{data.year_of_coding}}</td>
+					<td>{{data.school_name}}</td>
+					<td>{{data.specialization}}</td>
+				</tr>
+			{% endfor %}
+		{% else %}
+			<div class="alert alert-warning text-center" role="alert">Enter Data</div>
+		{% endif %}
+	  </tbody>
+	</table>
+</div>
+
+
+{% endblock content%}

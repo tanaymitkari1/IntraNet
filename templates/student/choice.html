@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>details of placement</h2>
+    <h3>{{placement.title}}</h3>
+    <p>{{placement.information}}</p>
+
+    <form method="POST" action="/placement/{{placement.id}}/">
+        {% csrf_token %}
+        
+        
+            <label>To confirm this placement type placement name in the given field</label>
+            <input type="text" name="answer" value="{{placement.text}}">
+        
+            <button type="submit" value="Vote">Submit</button>
+
+    </form>
+
+    <p>this is created by {{placement.created_by.first_name}}</p>
+    <h3>interview dates</h3>
+    <p>from {{placement.start_date}}  to {{placement.end_date}}</p>
+{% endblock content %}

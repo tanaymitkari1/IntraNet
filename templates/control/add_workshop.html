@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-success m-2" id="msg" role="alert">
+        {{message}}
+    </div>
+{% endfor %}
+{% endif %}
+
+
+<nav class="navbar navbar-light placement-nav">
+	<a class="navbar-brand" href="#"></a>
+	<a href="{% url 'eca' %}" class="float-rignt btn peach-gradient float-right btn-circle placement-btn"><i class="fas "></i><span>  </span>back</a>
+</nav>
+<!-- Material form login -->
+
+
+
+<div class="container">
+	<div class="card">
+        <h5 class="card-header info-color white-text text-center py-4">
+          <strong>Create Workshop</strong>
+        </h5>
+      
+        <!--Card content-->
+        <div class="card-body px-lg-5 pt-0">
+      
+          	<!-- Form -->
+          	<form class="text-center" style="color: #757575;" method="POST">
+				{% csrf_token %}
+				<!-- Email -->
+				<div class="md-form">
+					<input type="text" id="materialLoginFormEmail" class="form-control" name="title">
+					<label for="materialLoginFormEmail">Title</label>
+				</div>
+				<!-- Password -->
+				<div class="md-form">
+					<input type="text" id="materialLoginFormPassword" class="form-control" name="info">
+					<label for="materialLoginFormPassword">Information</label>
+				</div>
+				<div class="row">
+					<!--start date-->
+					<div class="col">
+						<div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
+							<input type="date" id="example" class="form-control" name="start_date">
+							<label for="example">Start Date</label>
+							<i class="fas fa-calendar input-prefix" tabindex=0></i>
+						</div>
+					</div>
+					<!--end date-->
+					<div class="col">
+						<div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
+							<input type="date" id="example" class="form-control" name="end_date">
+							<label for="example">End Date</label>
+							<i class="fas fa-calendar input-prefix" tabindex=0></i>
+						</div>
+					</div>
+				</div>
+				<!-- Sign in button -->
+				<button class="btn btn-outline-info btn-circle btn-block my-4 waves-effect z-depth-0" type="submit">Add</button>
+          	</form>
+          <!-- Form -->
+        </div>  
+    </div>
+      <!-- Material form login -->
+</div>
+
+
+{% endblock content %}

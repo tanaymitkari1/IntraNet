@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="alert alert-fail shadow text-center" id="msg" role="alert">
+{{error}}
+</div> 
+<div>
+    <div class="container login-container">
+        <form method="POST">
+            {% csrf_token %}
+                <div class="form-group">
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" class="form-control shadow" name="username" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                </div>
+                <div class="form-group">
+                    <lable for="password"><b>Password</b></lable>
+                    <input type="password" name="password" class="form-control shadow" id="exampleInputPassword1" required>
+                </div>
+            <div class="text-center">   
+                <button type="submit" class="btn btn-login">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
