@@ -26,6 +26,7 @@
 	<table class="table">
 	  <thead>
 		<tr>
+			<th scope="col">Serial no.</th>
 			<th scope="col">Subject Name</th>
 			<th scope="col">Subject Code</th>
 			<th scope="col">Course Type</th>
@@ -38,6 +39,7 @@
 		{% if data %}
 			{% for data in data %}
 				<tr>
+					<td>{{ forloop.counter }}</td>
 					<td>{{data.subject_name}}</td>
 					<td>{{data.subject_code}}</td>
 					<td>{{data.course_type}}</td>

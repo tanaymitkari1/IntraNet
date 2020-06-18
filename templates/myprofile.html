@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<nav class="navbar navbar-light placement-nav">
+    <a class="navbar-brand" href="#">My Profile</a>
+    <form method="POST" action="/logout/">
+        {% csrf_token %}                  
+        <input type="submit" class="btn btn-danger float-right btn-circle placement-btn" value="logout">
+    </form>
+</nav>
+
+  <div class="container bootstrap snippet">
+    <div class="row">
+  		<div class="col-sm-10"><h1>{{user.first_name}} {{user.last_name}}</h1></div>
+    </div>
+    <div class="row">
+  		<div class="col-sm-3"><!--left col-->
+              
+
+      <div class="text-center">
+        <img src="https://cdn.onlinewebfonts.com/svg/img_568656.png" class="avatar rounded-circle img-thumbnail" alt="avatar">
+        <h6>Change your profile picture</h6>
+        <input type="file" class="text-center center-block file-upload">
+      </div></hr><br>
+             
+          <div class="panel panel-default">
+            <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+            <div class="panel-body"><a href="http://bootnipets.com">yourwebsite.com</a></div>
+          </div>
+          {% if request.role == 'Admin' %}
+          <div class="panel panel-default">
+            <a href="{% url 'subject_add' %}" class=" btn purple-gradient btn-circle"><i class="fas fa-plus"></i><span>  </span>Add Subject</a>
+          </div>
+          {% endif %}
+          
+          <ul class="list-group">
+            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong></strong></li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong></strong></li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong></strong></li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong></strong></li>
+          </ul> 
+          
+        </div><!--/col-3-->
+    	<div class="col-sm-9">              
+          <div class="tab-content">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                    aria-selected="true">Credit Registration</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                      aria-selected="false">View Students</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#placement" role="tab" aria-controls="profile"
+                    aria-selected="false">Placements</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#certificates" role="tab" aria-controls="contact"
+                    aria-selected="false">Certificates</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="table-responsive">
+
+                        <!--Table-->
+                        <table class="table">
+                      
+                          <!--Table head-->
+                          <thead>
+                            <tr>
+                              <th>Serial no.</th>
+                              <th class="th-lg">Subject Name</th>
+                              <th class="th-lg">Credit</th>
+                              <th class="th-lg">checkbox</th>
+                            </tr>
+                          </thead>
+                          <!--Table head-->
+                      
+                          <!--Table body-->
+                          <tbody>
+                            {% if subject %}
+                            {% for subject in subject %}
+                            <tr>
+                              <th scope="row">{{ forloop.counter }}</th>
+                              <td>{{subject.name}}</td>
+                              <td>{{subject.credit}}</td> 
+                              <td><input type="checkbox"></td>                      
+                            </tr>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                            <div class="alert alert-warning text-center" role="alert">Enter Data</div>
+                            {% endif %}
+                          </tbody>
+                          <!--Table body-->
+                      
+                        </table>
+                        <!--Table-->
+                      
+                      </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                  <div class="table-responsive">
+
+                    <!--Table-->
+                    <table class="table">
+                  
+                      <!--Table head-->
+                      <thead>
+                        <tr>
+                          <th>Serial no.</th>
+                          <th class="th-lg">Students Name</th>
+                          <th class="th-lg">First Name</th>
+                          <th class="th-lg">Last Name</th>
+                        </tr>
+                      </thead>
+                      <!--Table head-->
+                  
+                      <!--Table body-->
+                      <tbody>
+                        {% if students %}
+                        {% for students in students %}
+                        <tr>
+                          <th scope="row">{{ forloop.counter }}</th>
+                          <td>{{students.username}}</td>
+                          <td>{{students.first_name}}</td> 
+                          <td>{{students.last_name}}</td>                   
+                        </tr>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <div class="alert alert-warning text-center" role="alert">Enter Data</div>
+                        {% endif %}
+                      </tbody>
+                      <!--Table body-->
+                  
+                    </table>
+                    <!--Table-->
+                  
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="placement" role="tabpanel" aria-labelledby="contact-tab">
+                  <div class="alert alert-warning text-center" role="alert">Work in progress</div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="certificates" role="tabpanel" aria-labelledby="contact-tab">
+                
+              </div>
+            </div>
+
+        </div><!--/col-9-->
+    </div><!--/row-->
+{% endblock content %}

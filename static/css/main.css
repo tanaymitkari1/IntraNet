@@ -89,8 +89,9 @@ a:hover{
 }
 .form-control{
     border-radius: 17px;
-    
-    
+}
+.navbar{
+    box-shadow:0px 10px 10px rgba(0,0,0,0.2);
 }
 .fa-trash-alt:hover{
     color: red;
@@ -158,3 +159,9 @@ a:hover{
     }
 
 }
+
+
+
+
+
+

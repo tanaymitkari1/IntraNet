@@ -29,4 +29,5 @@ urlpatterns = [
     path('placement/', include('placement.urls')),
     path('eca/', include('ECA.urls')),
     path('bos/', include('BOS.urls')),
-]
+    path('myprofile/', include('personal.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
