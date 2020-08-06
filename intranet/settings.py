@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'django_filters',
     'crispy_forms',
     'import_export',
+    'storages',
+    'multiselectfield',
+    'cart',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -73,13 +76,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processor.cart_total_amount',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'intranet.wsgi.application'
-
+CART_SESSION_ID = 'cart'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -139,3 +143,14 @@ STATIC_ROOT = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 MEDIA_URL = '/media/'
+
+
+
+#S3 bucket CONF
+#AWS_ACCESS_KEY_ID = 'AKIATATOSP7LYXLMF5P4'
+#AWS_SECRET_ACCESS_KEY = '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'
+#AWS_STORAGE_BUCKET_NAME = 'intranet123'
+#AWS_S3_FILE_OVERWRITE = False
+#AWS_DEFAULT_ACL = None
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

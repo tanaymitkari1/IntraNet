@@ -4,6 +4,7 @@ from django.contrib.auth.models import User, Group
 from placement.models import *
 
 
+
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, help_text='')
     username = forms.CharField(help_text='add your URN')

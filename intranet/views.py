@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from placement.models import *
 from django.contrib import messages
+from personal.models import *
 
 
 # Create your views here.
@@ -43,8 +44,7 @@ def register(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         if user_form.is_valid():
-            user_form.save()
-            
+            user_form.save()            
             return render(request, 'dashboard.html')
         else:
             return render(request, 'add.html', {"user_form": user_form})

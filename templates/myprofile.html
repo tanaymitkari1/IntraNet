@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load crispy_forms_tags %}
+{% load cart_tag %}
 
 <nav class="navbar navbar-light placement-nav">
     <a class="navbar-brand" href="#">My Profile</a>
@@ -36,19 +38,21 @@
           
           <ul class="list-group">
             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong></strong></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong></strong></li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong><a class=" btn purple-gradient btn-circle" href="{% url 'credit_registration' %}">Credit Registration</a></strong></li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>
+              
+            </strong></li>
             <li class="list-group-item text-right"><span class="pull-left"><strong></strong></li>
             <li class="list-group-item text-right"><span class="pull-left"><strong></strong></li>
           </ul> 
           
         </div><!--/col-3-->
-    	<div class="col-sm-9">              
+    	<div class="col-sm-9">   
           <div class="tab-content">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                   <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                    aria-selected="true">Credit Registration</a>
+                    aria-selected="true">My Credits</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
@@ -64,9 +68,9 @@
                 </li>
               </ul>
               <div class="tab-content" id="myTabContent">
+               
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="table-responsive">
-
                         <!--Table-->
                         <table class="table">
                       
@@ -76,25 +80,26 @@
                               <th>Serial no.</th>
                               <th class="th-lg">Subject Name</th>
                               <th class="th-lg">Credit</th>
-                              <th class="th-lg">checkbox</th>
+                              <th class="th-lg">Remove</th>
                             </tr>
                           </thead>
                           <!--Table head-->
                       
                           <!--Table body-->
                           <tbody>
-                            {% if subject %}
-                            {% for subject in subject %}
+                            {% if list %}
+                            {% for list in list %}
+                            
                             <tr>
                               <th scope="row">{{ forloop.counter }}</th>
-                              <td>{{subject.name}}</td>
-                              <td>{{subject.credit}}</td> 
-                              <td><input type="checkbox"></td>                      
+                              {% for name_subjects in list.name_subjects.all %}
+                              <td>{{name_subjects.name}}</td>
+                              <td>{{name_subjects.credit}}</td>   
+                              <td><a href="/myprofile/{{name_subjects.id}}/delete/"><i class="fas fa-trash-alt fa-lg"></i></a></td>   
+                              {% endfor %}
                             </tr>
-                            </tr>
+                                     
                             {% endfor %}
-                            {% else %}
-                            <div class="alert alert-warning text-center" role="alert">Enter Data</div>
                             {% endif %}
                           </tbody>
                           <!--Table body-->
@@ -144,12 +149,38 @@
                   
                   </div>
                 </div>
+
                 <div class="tab-pane fade" id="placement" role="tabpanel" aria-labelledby="contact-tab">
                   <div class="alert alert-warning text-center" role="alert">Work in progress</div>
                 </div>
-              </div>
-              <div class="tab-pane fade" id="certificates" role="tabpanel" aria-labelledby="contact-tab">
-                
+
+                <div class="tab-pane fade" id="certificates" role="tabpanel" aria-labelledby="contact-tab">
+                  <div class="container-fluid">
+                    <div class="alert alert-success" role="alert">
+                      <form method="POST" action="/myprofile/certi/" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h4 class="text-center">Upload Certificates</h4>
+                        <input type="file" id="myfile" name="certi"> 
+                        <button class="btn btn-default text-center" type="submit">Save</button>
+                      </form>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        {% if certis %}
+                          {% for certis in certis %}
+                            <div class="view">
+                              <img src="{{certis.image.url}}" class="img-fluid" alt="placeholder">
+                              <div class="mask flex-center waves-effect waves-light rgba-teal-light">
+                                <a href="/myprofile/{{certis.id}}/certificate_delete/"><i class="fas fa-trash-alt fa-lg"></i></a>
+                              </div>
+                            </div>
+                                                       
+                          {% endfor %}
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 

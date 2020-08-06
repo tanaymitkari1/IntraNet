@@ -45,12 +45,3 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    cv_upload = models.FileField(upload_to='cv/', null=True, blank=True)
-
-
-    def __str__(self):
-        return self.user.username

@@ -16,7 +16,7 @@
   <!-- Material Design Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   <link rel="stylesheet" href="{% static 'js/main.js' %}">
 </head>
 
@@ -32,6 +32,20 @@
     }
   }, 4000)
 </script>
+
+<script>
+  showChecked();
+  function showChecked(){
+    document.getElementById("result").textContent = "Total Subjects Selected = " + document.querySelectorAll("input:checked").length;
+  }
+  document.querySelectorAll("input[name=s]").forEach(i=>{
+   i.onclick = function(){
+    showChecked();
+   }
+  });
+</script>
+
+
   <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Bootstrap tooltips -->
